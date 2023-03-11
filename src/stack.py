@@ -7,7 +7,8 @@ class Node:
 
         :param data: данные, которые будут храниться в узле
         """
-        pass
+        self.data = data
+        self.next_node = next_node
 
 
 class Stack:
@@ -15,7 +16,8 @@ class Stack:
 
     def __init__(self):
         """Конструктор класса Stack"""
-        pass
+        self.data = [None]
+        self.i = 0
 
     def push(self, data):
         """
@@ -23,7 +25,9 @@ class Stack:
 
         :param data: данные, которые будут добавлены на вершину стека
         """
-        pass
+        obj_node = Node(data, self.data[self.i])
+        self.data.append(obj_node)
+        self.i += 1
 
     def pop(self):
         """
@@ -31,4 +35,17 @@ class Stack:
 
         :return: данные удаленного элемента
         """
-        pass
+        return_data = self.data[self.i]
+        self.data.pop()
+        self.i -= 1
+        return return_data
+
+    def top(self):
+        """
+        Метод для это ссылки на верхний элемент
+
+        :return: данные верхнего элемента
+        """
+        return self.data[self.i]
+
+    top = property(top)
