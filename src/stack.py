@@ -37,8 +37,9 @@ class Stack:
 
         :return: данные удаленного элемента
         """
-        return_data = self._data[self.i]
+        return_data = self._data[self.i].data
         self._data.pop()
         self.i -= 1
+        self.top = self._data[self.i]
         return return_data
 
