@@ -8,24 +8,28 @@ class Node:
 class LinkedList:
     """Класс для односвязного списка"""
     def __init__(self):
-        self.tail = Node(None, None)
-        self.head = Node(None, self.tail)
+        self.tail = None
+        self.head = None
 
     def insert_beginning(self, data: dict) -> None:
         """Принимает данные (словарь) и добавляет узел с этими данными в начало связанного списка"""
-        if self.head.data is None:
-            self.head.data = data
+        if self.head is None:
+            self.head = Node(data, self.tail)
         else:
             new_node = Node(data, self.head)
             self.head = new_node
 
     def insert_at_end(self, data: dict) -> None:
         """Принимает данные (словарь) и добавляет узел с этими данными в конец связанного списка"""
-        if self.tail.data is None:
-            self.tail.data = data
+        if self.tail is None:
+            if self.head is None:
+                self.head = Node(data, self.tail)
+            else:
+                self.tail = Node(data, None)
+                self.head.next_node = self.tail
         else:
-            new_Node = Node(data, None)
-            self.tail.next_node = new_Node
+            new_node = Node(data, None)
+            self.tail.next_node = new_node
             self.tail = self.tail.next_node
 
     def __str__(self) -> str:
