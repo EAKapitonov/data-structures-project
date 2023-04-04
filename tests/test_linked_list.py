@@ -1,6 +1,9 @@
 import unittest
 from src.linked_list import LinkedList, Node
+
 """Здесь надо написать тесты с использованием unittest для модуля linked_list."""
+
+
 class test_Node(unittest.TestCase):
     """
     тестирует класс Node
