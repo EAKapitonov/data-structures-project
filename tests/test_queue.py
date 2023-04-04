@@ -1,5 +1,4 @@
 from src.queue import Node, Queue
-import unittest
 
 
 class test_Node(unittest.TestCase):
