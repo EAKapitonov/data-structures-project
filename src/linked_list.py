@@ -1,5 +1,6 @@
 class Node:
     """Класс для узла односвязного списка"""
+
     def __init__(self, data, next_node=None):
         self.data = data
         self.next_node = next_node
@@ -7,6 +8,7 @@ class Node:
 
 class LinkedList:
     """Класс для односвязного списка"""
+
     def __init__(self):
         self.tail = None
         self.head = None
@@ -45,3 +47,33 @@ class LinkedList:
 
         ll_string += ' None'
         return ll_string
+
+    def to_list(self):
+        """
+        возвращает список с данными, содержащимися в односвязном списке `LinkedList`
+        """
+        return_list = []
+        first_node: Node = self.head
+        while first_node:
+            return_list.append(first_node.data)
+            first_node = first_node.next_node
+        return return_list
+
+    def get_data_by_id(self, dat: int):
+        """
+        возвращает первый найденный в `LinkedList` словарь с ключом 'id', значение которого равно переданному в метод значению
+        """
+        first_node: Node = self.head
+        while first_node:
+            try:
+                if not isinstance(first_node.data, dict):
+                    raise TypeError
+                elif first_node.data["id"] == dat:
+                    return first_node.data
+                else:
+                    first_node = first_node.next_node
+            except TypeError:
+                print("неподходящий формат данных")
+                first_node = first_node.next_node
+
+

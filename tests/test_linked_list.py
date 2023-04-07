@@ -30,3 +30,18 @@ class test_LinkedList(unittest.TestCase):
         self.assertEqual(ll.tail.data, {'id': 3})
         self.assertEqual(ll.head.next_node.data, {'id': 1})
         self.assertEqual(ll.tail.next_node, None)
+    def test_get_data_by_id(self):
+        lll = LinkedList()
+        lll.insert_beginning({'id': 1, 'username': 'lazzy508509'})
+        lll.insert_at_end({'id': 2, 'username': 'mik.roz'})
+        lll.insert_at_end({'id': 3, 'username': 'mosh_s'})
+        lll.insert_beginning({'id': 0, 'username': 'serebro'})
+        self.assertEqual(lll.get_data_by_id(2), {'id': 2, 'username': 'mik.roz'})
+
+    def test_to_list(self):
+        ll2 = LinkedList()
+        ll2.insert_beginning({'id': 1})
+        ll2.insert_at_end({'id': 2})
+        ll2.insert_at_end({'id': 3})
+        ll2.insert_beginning({'id': 0})
+        self.assertEqual(ll2.to_list(), [{'id': 0},{'id': 1},{'id': 2},{'id': 3}])
